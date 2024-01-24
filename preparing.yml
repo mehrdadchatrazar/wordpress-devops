@@ -1,0 +1,8 @@
+---
+- hosts: servers
+  become: true
+  gather_facts: yes
+  name: install and configure the server
+  roles:
+  # preparing server and hardening
+    - { role: os_hardening, become: True, tags: os_hardening }
