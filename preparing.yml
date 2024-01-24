@@ -6,3 +6,5 @@
   roles:
   # preparing server and hardening
     - { role: os_hardening, become: True, tags: os_hardening }
+  # install and configure docker service
+    - { role: docker, become: True, tags: docker_setup }
