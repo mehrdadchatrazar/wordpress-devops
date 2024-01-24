@@ -133,3 +133,15 @@
     - os_security_kernel_enable_module_loading
   ignore_errors: true
   tags: always
+
+- name: Make iptables configuration file.
+  template:
+    src: iptables.j2
+    dest: /etc/iptables/rules.v4
+
+- name: restore iptables state from a file
+  community.general.iptables_state:
+    state: restored
+    path: /etc/iptables/rules.v4
+    noflush: true
+  notify: Restart iptables
